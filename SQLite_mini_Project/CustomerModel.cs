@@ -16,7 +16,7 @@ namespace SQLite_mini_Project
                 db.Open();
 
                 String tableCommand = "CREATE TABLE IF NOT EXISTS Customers (" +
-                    "Customer_Id INTEGER(13) PRIMARY KEY," +
+                    "Customer_Id INTEGER(5) PRIMARY KEY," +
                     "Customer_name NVARCHAR(30) NULL," +
                     "Customer_address NVARXHAR(100) NULL," +
                     "Customer_email NVARXHAR(100) NULL)";
