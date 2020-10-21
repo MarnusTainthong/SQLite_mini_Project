@@ -23,5 +23,20 @@ namespace SQLite_mini_Project
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbLoginEmail.Text == "abc@aa.com" && tbLoginPassword.Text == "1234")
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                tbLoginPassword.Clear();
+                MessageBox.Show("Email หรือ Password ผิด กรุณาลองใหม่อีกครั้ง", "เข้าสู่ระบบไม่สำเร็จ");
+            }
+        }
     }
 }
