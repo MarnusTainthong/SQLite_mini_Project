@@ -11,8 +11,9 @@
         <Label x:Name="label" Content=":: เข้าสู่ระบบ ::" FontFamily="TH Sarabun New" FontSize="36" Width="156" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Margin="10,10,0,0"/>
         <Label x:Name="lbLoginPassword" Content="Password" HorizontalAlignment="Left" Margin="89,118,0,0" VerticalAlignment="Top" FontFamily="TH Sarabun New" FontSize="20" FontWeight="Bold"/>
         <TextBox x:Name="tbLoginEmail" HorizontalAlignment="Left" Height="28" Margin="178,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="227"/>
-        <TextBox x:Name="tbLoginPassword" HorizontalAlignment="Left" Height="28" Margin="178,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="227"/>
+        
         <Button x:Name="btnLogin" Content="เข้าสู่ระบบ" HorizontalAlignment="Center" Margin="0,173,0,0" VerticalAlignment="Top" Width="316" Height="33" FontFamily="TH Sarabun New" FontSize="20" Click="btnLogin_Click"/>
+        <PasswordBox x:Name="tbLoginPassword" HorizontalAlignment="Left" Margin="178,118,0,0" VerticalAlignment="Top" Width="227" Height="28"/>
 
     </Grid>
 </Window>

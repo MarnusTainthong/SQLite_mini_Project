@@ -26,7 +26,13 @@ namespace SQLite_mini_Project
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (tbLoginEmail.Text == "abc@aa.com" && tbLoginPassword.Text == "1234")
+            if (tbLoginEmail.Text == "abc@aa.com" && tbLoginPassword.Password == "1234")
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            else if(tbLoginEmail.Text == "11" && tbLoginPassword.Password == "22")
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

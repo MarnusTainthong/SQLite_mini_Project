@@ -23,8 +23,7 @@ namespace SQLite_mini_Project
         public MainWindow()
         {
             InitializeComponent();
-            //LoginWindow loginWindow = new LoginWindow();
-            //loginWindow.Hide();
         }
+
     }
 }
