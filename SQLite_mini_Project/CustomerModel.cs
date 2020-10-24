@@ -107,7 +107,6 @@ namespace SQLite_mini_Project
 
         public static List<List<string>> filterSearchCystomerData(string searchFilter,string searchKeyword)
         {
-            MessageBox.Show(tbName);
             List<List<String>> customerData = new List<List<String>>();
             using(SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
             {
@@ -115,18 +114,20 @@ namespace SQLite_mini_Project
                 SqliteCommand searchCommand = new SqliteCommand();
                 if(searchFilter == "ทั้งหมด")
                 {
+                    
                     searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
                                                 "WHERE Customer_Id LIKE '%"+ @searchKeyword + "%' OR " +
                                                 "Customer_name LIKE '%" + @searchKeyword + "%' OR " +
                                                 "Customer_address LIKE '%" + @searchKeyword + "%' OR " +
                                                 "Customer_email LIKE '%" + @searchKeyword + "%'";
+
                     /*
                     searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
                                                 "WHERE Customer_Id LIKE '%" + @searchKeyword + "%'";
                     */
 
-                    searchCommand.Parameters.AddWithValue(@searchKeyword,searchKeyword);
-                    MessageBox.Show(searchCommand.CommandText);
+
+                    searchCommand.Parameters.AddWithValue("@searchKeyword",searchKeyword);
                     searchCommand.Connection = db;
                     SqliteDataReader query = searchCommand.ExecuteReader();
 
@@ -139,8 +140,6 @@ namespace SQLite_mini_Project
                         }
                         customerData.Add(dataColumn);
                     }
-
-                    db.Close();
                 }
                 
                 db.Close();
