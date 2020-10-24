@@ -79,36 +79,28 @@ namespace SQLite_mini_Project
             //MessageBox.Show(selectSearchFilter.Text);
             string searchFilter = selectSearchFilter.Text;
 
-            if (tbInputSearch.Text == null)
+            List<List<string>> dataFound = new List<List<string>>();
+            int i = 0;
+            foreach (List<string> searchItem in CustomerModel.filterSearchCystomerData(searchFilter, tbInputSearch.Text))
             {
-                showCustomerData();
-                
+                dataFound.Add(searchItem);
+                i++;
+            }
+
+            if (dataFound.Count == 0)
+            {
+                MessageBox.Show("Data Not Found.");
+                listViewCustomers.ItemsSource = "";
             }
             else
             {
-                List<List<string>> dataFound = new List<List<string>>();
-                int i = 0;
-                foreach (List<string> searchItem in CustomerModel.filterSearchCystomerData(searchFilter, tbInputSearch.Text))
+                List<CustomerModel> customerList = new List<CustomerModel>();
+                int numberOfList = dataFound.Count();
+                for (int j = 0; j < numberOfList; j++)
                 {
-                    dataFound.Add(searchItem);
-                    i++;
+                    customerList.Add(new CustomerModel(dataFound[j][0], dataFound[j][1], dataFound[j][2], dataFound[j][3]));
                 }
-
-                if (dataFound.Count == 0)
-                {
-                    MessageBox.Show("Data Not Found.");
-                    listViewCustomers.ItemsSource = "";
-                }
-                else
-                {
-                    List<CustomerModel> customerList = new List<CustomerModel>();
-                    int numberOfList = dataFound.Count();
-                    for (int j = 0; j < numberOfList; j++)
-                    {
-                        customerList.Add(new CustomerModel(dataFound[j][0], dataFound[j][1], dataFound[j][2], dataFound[j][3]));
-                    }
-                    listViewCustomers.ItemsSource = customerList;
-                }
+                listViewCustomers.ItemsSource = customerList;
             }
         }
     }

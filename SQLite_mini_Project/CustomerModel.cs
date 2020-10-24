@@ -111,37 +111,53 @@ namespace SQLite_mini_Project
             using(SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
             {
                 db.Open();
-                SqliteCommand searchCommand = new SqliteCommand();
-                if(searchFilter == "ทั้งหมด")
+                SqliteCommand searchCommand = new SqliteCommand();        
+
+                if (searchFilter == "ทั้งหมด")
                 {
                     
                     searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
                                                 "WHERE Customer_Id LIKE '%"+ @searchKeyword + "%' OR " +
                                                 "Customer_name LIKE '%" + @searchKeyword + "%' OR " +
                                                 "Customer_address LIKE '%" + @searchKeyword + "%' OR " +
-                                                "Customer_email LIKE '%" + @searchKeyword + "%'";
-
-                    /*
+                                                "Customer_email LIKE '%" + @searchKeyword + "%'";                    
+                }
+                else if (searchFilter == "รหัสลูกค้า")
+                {
                     searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
                                                 "WHERE Customer_Id LIKE '%" + @searchKeyword + "%'";
-                    */
-
-
-                    searchCommand.Parameters.AddWithValue("@searchKeyword",searchKeyword);
-                    searchCommand.Connection = db;
-                    SqliteDataReader query = searchCommand.ExecuteReader();
-
-                    while (query.Read())
-                    {
-                        List<string> dataColumn = new List<string>();
-                        for (int i = 0; i < query.FieldCount; i++)
-                        {
-                            dataColumn.Add(query.GetString(i));
-                        }
-                        customerData.Add(dataColumn);
-                    }
                 }
-                
+                else if (searchFilter == "ชื่อลูกค้า")
+                {
+                    searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
+                                                "WHERE Customer_name LIKE '%" + @searchKeyword + "%'";
+                }
+                else if (searchFilter == "ที่อยู่")
+                {
+                    searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
+                                                "WHERE Customer_address LIKE '%" + @searchKeyword + "%'";
+                }
+                else if (searchFilter == "Email")
+                {
+                    searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
+                                                "WHERE Customer_email LIKE '%" + @searchKeyword + "%'";
+                }
+
+                searchCommand.Parameters.AddWithValue("@searchKeyword", searchKeyword);
+                MessageBox.Show(searchCommand.CommandText);
+                searchCommand.Connection = db;
+                SqliteDataReader query = searchCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    List<string> dataColumn = new List<string>();
+                    for (int i = 0; i < query.FieldCount; i++)
+                    {
+                        dataColumn.Add(query.GetString(i));
+                    }
+                    customerData.Add(dataColumn);
+                }
+
                 db.Close();
             }
             return customerData;
