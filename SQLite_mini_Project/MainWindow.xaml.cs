@@ -25,5 +25,11 @@ namespace SQLite_mini_Project
             InitializeComponent();
         }
 
+        private void btnManageCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            ManageCustomerForm manageCustomerForm = new ManageCustomerForm();
+            manageCustomerForm.Show();
+            this.Close();
+        }
     }
 }

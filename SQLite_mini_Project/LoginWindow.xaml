@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLite_mini_Project"
         mc:Ignorable="d"
-        Title="เข้าสู่ระบบ" Height="270" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="เข้าสู่ระบบ" Height="270" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True">
     <Grid>
         <Label x:Name="lbLoginEmail" Content="Email" HorizontalAlignment="Left" Margin="89,76,0,0" VerticalAlignment="Top" FontFamily="TH Sarabun New" FontSize="20" FontWeight="Bold"/>
         <Label x:Name="label" Content=":: เข้าสู่ระบบ ::" FontFamily="TH Sarabun New" FontSize="36" Width="156" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Margin="10,10,0,0"/>

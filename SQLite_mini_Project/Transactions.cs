@@ -9,14 +9,16 @@ namespace SQLite_mini_Project
 {
     class Transactions
     {
+        private static string dbpath = "sqliteBookStore.db";
         public static void InitializeDatabase()
         {
-            using (SqliteConnection db = new SqliteConnection("Filename=sqliteBookStore.db"))
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
             {
                 db.Open();
 
                 String tableCommand = "CREATE TABLE IF NOT EXISTS Transactions (" +
-                    "ISBN INTEGER(13) NULL," +
+                    "Transaction_Id INTEGER(5) PRIMARY KEY" +
+                    "ISBN NVARCHAR(13) NULL," +
                     "Customer_Id INTEGER(5) NULL," +
                     "Quantity INT(5) NULL," +
                     "Total_price FLOAT(8) NULL)";

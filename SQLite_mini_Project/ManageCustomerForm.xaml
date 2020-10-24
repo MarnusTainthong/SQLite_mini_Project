@@ -1,0 +1,34 @@
+﻿<Window x:Class="SQLite_mini_Project.ManageCustomerForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLite_mini_Project"
+        mc:Ignorable="d"
+        Title="จัดการข้อมูลลูกค้า" Height="450" Width="782">
+    <Grid>
+        <TextBox x:Name="tbInputSearch" HorizontalAlignment="Left" Height="23" Margin="134,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+        <TextBox x:Name="tbInputCustomerId" HorizontalAlignment="Left" Height="23" Margin="540,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbCustomerId" Content="Customer ID" HorizontalAlignment="Left" Margin="451,64,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputCustomerName" HorizontalAlignment="Left" Height="23" Margin="540,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbCustomerName" Content="Name" HorizontalAlignment="Left" Margin="485,99,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbCustomerAddress" Content="Address" HorizontalAlignment="Left" Margin="474,136,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputCustomerEmail" HorizontalAlignment="Left" Height="23" Margin="540,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbCustomerEmail" Content="Email" HorizontalAlignment="Left" Margin="489,238,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputCustomerAddress" HorizontalAlignment="Left" Height="86" Margin="540,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbCustomerId_Copy" Content="Search" HorizontalAlignment="Left" Margin="76,64,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAddCustomer" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="457,292,0,0" VerticalAlignment="Top" Width="85" Height="40" Click="btnAddCustomer_Click"/>
+        <Button x:Name="btnEditCustomer" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="563,292,0,0" VerticalAlignment="Top" Width="85" Height="40"/>
+        <Button x:Name="btnEditCustomer_Copy" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="670,292,0,0" VerticalAlignment="Top" Width="85" Height="40"/>
+        <ListView x:Name="listViewCustomers" HorizontalAlignment="Left" Height="284" Margin="16,102,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="รหัสลูกค้า" DisplayMemberBinding="{Binding Path=Customer_Id}" Width="80"/>
+                    <GridViewColumn Header="ชื่อ - นามสกุล" DisplayMemberBinding="{Binding Path=Customer_name}" Width="120"/>
+                    <GridViewColumn Header="ที่อยู่" DisplayMemberBinding="{Binding Path=Customer_address}" Width="100"/>
+                    <GridViewColumn Header="อีเมล" DisplayMemberBinding="{Binding Path=Customer_email}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

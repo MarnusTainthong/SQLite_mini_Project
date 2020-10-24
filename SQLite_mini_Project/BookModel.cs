@@ -16,7 +16,7 @@ namespace SQLite_mini_Project
                 db.Open();
 
                 String tableCommand = "CREATE TABLE IF NOT EXISTS Books (" +
-                    "ISBN INTEGER(13) PRIMARY KEY," +
+                    "ISBN NVARCHAR(13) PRIMARY KEY," +
                     "Title NVARCHAR(30) NULL," +
                     "Description NVARXHAR(30) NULL," +
                     "Price FLOAT(5) NULL)";

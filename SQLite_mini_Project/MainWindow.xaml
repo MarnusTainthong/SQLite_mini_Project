@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="เมนูหลัก" Height="340.13" Width="542.858" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="btnManageCustomer" Content="จัดการข้อมูลลูกค้า" HorizontalAlignment="Center" Margin="82,16,83,0" VerticalAlignment="Top" Width="370" Height="80" FontSize="22" FontFamily="TH Sarabun New" FontWeight="Bold"/>
+        <Button x:Name="btnManageCustomer" Content="จัดการข้อมูลลูกค้า" HorizontalAlignment="Center" Margin="82,16,83,0" VerticalAlignment="Top" Width="370" Height="80" FontSize="22" FontFamily="TH Sarabun New" FontWeight="Bold" Click="btnManageCustomer_Click"/>
         <Button x:Name="btnManageBook" Content="จัดการข้อมูลหนังสือ" HorizontalAlignment="Center" Margin="82,114,83,0" VerticalAlignment="Top" Width="370" Height="80" FontSize="22" FontFamily="TH Sarabun New" FontWeight="Bold"/>
         <Button x:Name="btnPurchaseBook" Content="สั่งซื้อหนังสือ" HorizontalAlignment="Center" Margin="82,213,83,0" VerticalAlignment="Top" Width="370" Height="80" FontSize="24" FontFamily="TH Sarabun New" FontWeight="Bold"/>
 
