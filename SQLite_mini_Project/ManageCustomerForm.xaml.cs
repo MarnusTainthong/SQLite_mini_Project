@@ -113,5 +113,40 @@ namespace SQLite_mini_Project
             tbInputCustomerAddress.Clear();
             tbInputCustomerEmail.Clear();
         }
+
+        private void listViewCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CustomerModel selectCustomer = (CustomerModel)listViewCustomers.SelectedItem;
+            if(selectCustomer != null)
+            {
+                tbInputCustomerId.Text = selectCustomer.Customer_Id;
+                tbInputCustomerId.IsReadOnly = true;
+                tbInputCustomerName.Text = selectCustomer.Customer_name;
+                tbInputCustomerAddress.Text = selectCustomer.Customer_address;
+                tbInputCustomerEmail.Text = selectCustomer.Customer_email;
+            }
+            
+        }
+
+        private void btnEditCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "คุณ 'ยืนยัน' ที่จะแก้ไขข้อมูล ใช่หรือไม่ ?";
+            string title = "ยืนยันการลบ";
+            MessageBoxButton msgButton = MessageBoxButton.YesNo;
+
+            if (MessageBox.Show(message, title, msgButton, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                if (CustomerModel.updateCustomer(tbInputCustomerId.Text, tbInputCustomerName.Text, tbInputCustomerAddress.Text, tbInputCustomerEmail.Text))
+                {
+                    resetFormData();
+                    showCustomerData();
+                    MessageBox.Show("แก้ไขข้อมูลสำเร็จ!");
+                }
+                else
+                {
+                    MessageBox.Show("แก้ไขข้อมูลไม่สำเร็จ! โปรดติดต่อเจ้าหน้าที่");
+                }
+            }
+        }
     }
 }

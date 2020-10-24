@@ -49,7 +49,7 @@ namespace SQLite_mini_Project
             }
         }
 
-        public static Boolean AddCustomer(string CustomerId, string CustomerName, string CustomerAddress, string CustomerEmail)
+        public static bool AddCustomer(string CustomerId, string CustomerName, string CustomerAddress, string CustomerEmail)
         {
             try
             {
@@ -144,7 +144,6 @@ namespace SQLite_mini_Project
                 }
 
                 searchCommand.Parameters.AddWithValue("@searchKeyword", searchKeyword);
-                MessageBox.Show(searchCommand.CommandText);
                 searchCommand.Connection = db;
                 SqliteDataReader query = searchCommand.ExecuteReader();
 
@@ -162,6 +161,34 @@ namespace SQLite_mini_Project
             }
             return customerData;
         }
+        public static Boolean updateCustomer(string customerId, string customerName, string customerAddress, string customerEmail)
+        {
+            try
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand();
+                    updateCommand.CommandText = "UPDATE " + tbName + " SET Customer_name = @Customer_name, Customer_address = @Customer_address, Customer_email = @Customer_email " +
+                                                "WHERE Customer_Id = @Customer_Id";
 
+                    updateCommand.Parameters.AddWithValue("@Customer_name", customerName);
+                    updateCommand.Parameters.AddWithValue("@Customer_address", customerAddress);
+                    updateCommand.Parameters.AddWithValue("@Customer_email", customerEmail);
+                    updateCommand.Parameters.AddWithValue("@Customer_Id", customerId);
+
+                    updateCommand.Connection = db;
+                    updateCommand.ExecuteReader();
+
+                    db.Close();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }    
     }
 }

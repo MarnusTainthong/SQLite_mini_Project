@@ -17,9 +17,9 @@
         <Label x:Name="lbCustomerEmail" Content="Email" HorizontalAlignment="Left" Margin="489,238,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbInputCustomerAddress" HorizontalAlignment="Left" Height="86" Margin="540,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
         <Button x:Name="btnAddCustomer" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="457,292,0,0" VerticalAlignment="Top" Width="85" Height="40" Click="btnAddCustomer_Click"/>
-        <Button x:Name="btnEditCustomer" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="563,292,0,0" VerticalAlignment="Top" Width="85" Height="40"/>
-        <Button x:Name="btnEditCustomer_Copy" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="670,292,0,0" VerticalAlignment="Top" Width="85" Height="40"/>
-        <ListView x:Name="listViewCustomers" HorizontalAlignment="Left" Height="284" Margin="16,102,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
+        <Button x:Name="btnEditCustomer" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="563,292,0,0" VerticalAlignment="Top" Width="85" Height="40" Click="btnEditCustomer_Click"/>
+        <Button x:Name="btnRemoveCustomer" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="670,292,0,0" VerticalAlignment="Top" Width="85" Height="40"/>
+        <ListView x:Name="listViewCustomers" HorizontalAlignment="Left" Height="284" Margin="16,102,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single" SelectionChanged="listViewCustomers_SelectionChanged">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="รหัสลูกค้า" DisplayMemberBinding="{Binding Path=Customer_Id}" Width="80"/>
