@@ -66,7 +66,43 @@ namespace SQLite_mini_Project
                 }
                 listViewCustomers.ItemsSource = customerList;
             }
+            
         }
 
+        private void tbInputSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbInputSearch.Text = "";
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(selectSearchFilter.Text);
+            string searchFilter = selectSearchFilter.Text;
+
+            List<List<string>> dataFound = new List<List<string>>();
+            int i = 0;
+            foreach (List<string> searchItem in CustomerModel.filterSearchCystomerData(searchFilter, tbInputSearch.Text))
+            {
+                dataFound.Add(searchItem);
+                i++;
+            }
+
+            if (dataFound.Count == 0)
+            {
+                MessageBox.Show("Data Not Found.");
+                listViewCustomers.ItemsSource = "";
+            }
+            else
+            {
+                List<CustomerModel> customerList = new List<CustomerModel>();
+                int numberOfList = dataFound.Count();
+                for (int j = 0; j < numberOfList; j++)
+                {
+                    customerList.Add(new CustomerModel(dataFound[j][0], dataFound[j][1], dataFound[j][2], dataFound[j][3]));
+                }
+                listViewCustomers.ItemsSource = customerList;
+            }          
+
+        }
     }
 }

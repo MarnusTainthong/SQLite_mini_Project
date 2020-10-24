@@ -29,7 +29,7 @@ namespace SQLite_mini_Project
         {
             ManageCustomerForm manageCustomerForm = new ManageCustomerForm();
             manageCustomerForm.Show();
-            this.Close();
+            //this.Close();
         }
     }
 }
