@@ -9,10 +9,10 @@
     <Grid>
         <TextBox x:Name="tbInputSearch" HorizontalAlignment="Left" Height="23" Margin="134,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
         <TextBox x:Name="tbInputCustomerId" HorizontalAlignment="Left" Height="23" Margin="540,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="lbCustomerId" Content="Customer ID" HorizontalAlignment="Left" Margin="451,64,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbCustomerId" Content="รหัสลูกค้า" HorizontalAlignment="Left" Margin="473,64,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbInputCustomerName" HorizontalAlignment="Left" Height="23" Margin="540,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="lbCustomerName" Content="Name" HorizontalAlignment="Left" Margin="485,99,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbCustomerAddress" Content="Address" HorizontalAlignment="Left" Margin="474,136,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbCustomerName" Content="ชื่อลูกค้า" HorizontalAlignment="Left" Margin="478,99,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbCustomerAddress" Content="ที่อยู่" HorizontalAlignment="Left" Margin="497,136,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbInputCustomerEmail" HorizontalAlignment="Left" Height="23" Margin="540,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
         <Label x:Name="lbCustomerEmail" Content="Email" HorizontalAlignment="Left" Margin="489,238,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbInputCustomerAddress" HorizontalAlignment="Left" Height="86" Margin="540,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
