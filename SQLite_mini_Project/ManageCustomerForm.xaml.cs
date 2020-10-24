@@ -35,6 +35,8 @@ namespace SQLite_mini_Project
 
             if (CustomerModel.AddCustomer(CustomerId, CustomerName, CustomerAddress, CustomerEmail))
             {
+                resetFormData();
+                showCustomerData();
                 MessageBox.Show("เพิ่มข้อมูลสำเร็จ!");
             }
             else
@@ -102,6 +104,14 @@ namespace SQLite_mini_Project
                 }
                 listViewCustomers.ItemsSource = customerList;
             }
+        }
+
+        public void resetFormData()
+        {
+            tbInputCustomerId.Clear();
+            tbInputCustomerName.Clear();
+            tbInputCustomerAddress.Clear();
+            tbInputCustomerEmail.Clear();
         }
     }
 }
