@@ -162,5 +162,26 @@ namespace SQLite_mini_Project
         {
             resetFormData();
         }
+
+        private void btnRemoveCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "คุณ 'ยืนยัน' ที่จะลบข้อมูล ใช่หรือไม่ ?";
+            string title = "ยืนยันการลบ";
+            MessageBoxButton msgButton = MessageBoxButton.YesNo;
+
+            if (MessageBox.Show(message, title, msgButton, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                if (CustomerModel.removeCustomer(tbInputCustomerId.Text))
+                {
+                    MessageBox.Show("ลบข้อมูลสำเร็จ!");
+                    showCustomerData();
+                }
+                else
+                {
+                    MessageBox.Show("ลบข้อมูลไม่สำเร็จ! โปรดติดต่อเจ้าหน้าที่");
+                }
+            }
+            resetFormData();
+        }
     }
 }

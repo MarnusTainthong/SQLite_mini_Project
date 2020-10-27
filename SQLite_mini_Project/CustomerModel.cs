@@ -189,6 +189,31 @@ namespace SQLite_mini_Project
                 MessageBox.Show(e.Message);
                 return false;
             }
-        }    
+        }
+        public static bool removeCustomer(string customerId)
+        {
+            try
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand();
+                    updateCommand.CommandText = "DELETE FROM " + tbName + " WHERE Customer_Id = @Customer_Id";
+                    updateCommand.Parameters.AddWithValue("@Customer_Id", customerId);
+
+                    updateCommand.Connection = db;
+                    updateCommand.ExecuteReader();
+
+                    db.Close();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+
+        }
     }
 }
