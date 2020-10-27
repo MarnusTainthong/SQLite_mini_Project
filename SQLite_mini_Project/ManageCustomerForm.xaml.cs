@@ -28,21 +28,29 @@ namespace SQLite_mini_Project
 
         private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            string CustomerId = tbInputCustomerId.Text;
-            string CustomerName = tbInputCustomerName.Text;
-            string CustomerAddress = tbInputCustomerAddress.Text;
-            string CustomerEmail = tbInputCustomerEmail.Text;
-
-            if (CustomerModel.AddCustomer(CustomerId, CustomerName, CustomerAddress, CustomerEmail))
+            if (tbInputCustomerId.IsReadOnly)
             {
-                resetFormData();
-                showCustomerData();
-                MessageBox.Show("เพิ่มข้อมูลสำเร็จ!");
+                MessageBox.Show("ไม่สามารถเพิ่มข้อมูลได้ โปรดลองใหม่อีกครั้ง","Error",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("เพิ่มข้อมูลไม่สำเร็จ! โปรดติดต่อเจ้าหน้าที่");
-            }      
+                string CustomerId = tbInputCustomerId.Text;
+                string CustomerName = tbInputCustomerName.Text;
+                string CustomerAddress = tbInputCustomerAddress.Text;
+                string CustomerEmail = tbInputCustomerEmail.Text;
+
+                if (CustomerModel.AddCustomer(CustomerId, CustomerName, CustomerAddress, CustomerEmail))
+                {
+                    showCustomerData();
+                    MessageBox.Show("เพิ่มข้อมูลสำเร็จ!");
+                }
+                else
+                {
+                    MessageBox.Show("เพิ่มข้อมูลไม่สำเร็จ! โปรดติดต่อเจ้าหน้าที่");
+                }
+            }
+            resetFormData();
+
         }
         private void showCustomerData()
         {
@@ -108,6 +116,7 @@ namespace SQLite_mini_Project
 
         public void resetFormData()
         {
+            tbInputCustomerId.IsReadOnly = false;
             tbInputCustomerId.Clear();
             tbInputCustomerName.Clear();
             tbInputCustomerAddress.Clear();
@@ -131,15 +140,14 @@ namespace SQLite_mini_Project
         private void btnEditCustomer_Click(object sender, RoutedEventArgs e)
         {
             string message = "คุณ 'ยืนยัน' ที่จะแก้ไขข้อมูล ใช่หรือไม่ ?";
-            string title = "ยืนยันการลบ";
+            string title = "ยืนยันการแก้ไข";
             MessageBoxButton msgButton = MessageBoxButton.YesNo;
 
             if (MessageBox.Show(message, title, msgButton, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 if (CustomerModel.updateCustomer(tbInputCustomerId.Text, tbInputCustomerName.Text, tbInputCustomerAddress.Text, tbInputCustomerEmail.Text))
                 {
-                    resetFormData();
-                    showCustomerData();
+                    
                     MessageBox.Show("แก้ไขข้อมูลสำเร็จ!");
                 }
                 else
@@ -147,6 +155,12 @@ namespace SQLite_mini_Project
                     MessageBox.Show("แก้ไขข้อมูลไม่สำเร็จ! โปรดติดต่อเจ้าหน้าที่");
                 }
             }
+            resetFormData();
+        }
+
+        private void btnClearData_Click(object sender, RoutedEventArgs e)
+        {
+            resetFormData();
         }
     }
 }
