@@ -22,7 +22,6 @@ namespace SQLite_mini_Project
                     "Price FLOAT(5) NULL)";
 
                 SqliteCommand createTable = new SqliteCommand(tableCommand, db);
-
                 createTable.ExecuteReader();
             }
         }
