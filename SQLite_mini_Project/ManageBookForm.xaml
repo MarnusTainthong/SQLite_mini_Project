@@ -7,19 +7,29 @@
         mc:Ignorable="d"
         Title="จัดการข้อมูลหนังสือ" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="tbInputSearch" HorizontalAlignment="Left" Height="23" Margin="119,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Text="ใส่ข้อความที่ต้องการค้นหา.."/>
-        <TextBox x:Name="tbInputISBN" HorizontalAlignment="Left" Height="23" Margin="548,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="lbBookISBN" Content="ISBN" HorizontalAlignment="Left" Margin="502,62,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbInputBookTitle" HorizontalAlignment="Left" Height="23" Margin="548,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="lbBookTitle" Content="ชื่อหนังสือ" HorizontalAlignment="Left" Margin="482,97,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbBookDesc" Content="คำอธิบาย" HorizontalAlignment="Left" Margin="484,134,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbInputBookPrice" HorizontalAlignment="Left" Height="23" Margin="548,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="lbBookPrice" Content="ราคาหนังสือ" HorizontalAlignment="Left" Margin="472,236,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbInputBookDesc" HorizontalAlignment="Left" Height="86" Margin="548,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Button x:Name="btnAddCustomer" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="486,290,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
-        <Button x:Name="btnEditCustomer" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="641,290,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
-        <Button x:Name="btnRemoveCustomer" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="641,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
-        <ListView x:Name="listViewBook" HorizontalAlignment="Left" Height="284" Margin="24,100,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
+        <Label x:Name="lbBookISBN" Content="ISBN" HorizontalAlignment="Left" Margin="497,62,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputISBN" HorizontalAlignment="Left" Height="23" Margin="543,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" MaxLength="13" MaxLines="1" PreviewTextInput="tbInputISBN_PreviewTextInput"/>
+        <Label x:Name="lbBookTitle" Content="ชื่อหนังสือ" HorizontalAlignment="Left" Margin="477,97,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputBookTitle" HorizontalAlignment="Left" Height="23" Margin="543,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbBookDesc" Content="คำอธิบาย" HorizontalAlignment="Left" Margin="479,134,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputBookDesc" HorizontalAlignment="Left" Height="86" Margin="543,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbBookPrice" Content="ราคาหนังสือ" HorizontalAlignment="Left" Margin="467,236,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputBookPrice" HorizontalAlignment="Left" Height="23" Margin="543,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" PreviewTextInput="tbInputBookPrice_PreviewTextInput"/>
+        <Button x:Name="btnAddCustomer" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="481,290,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnAddCustomer_Click"/>
+        <Button x:Name="btnEditCustomer" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="636,290,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
+        <Button x:Name="btnClearData" Content="ล้างข้อมูล" HorizontalAlignment="Left" Margin="481,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
+        <Button x:Name="btnRemoveCustomer" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="636,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
+
+        <ComboBox x:Name="selectSearchFilter" HorizontalAlignment="Left" Margin="31,66,0,0" VerticalAlignment="Top" Width="90">
+            <ComboBoxItem Content="ทั้งหมด" IsSelected="True"/>
+            <ComboBoxItem Content="รหัสลูกค้า"/>
+            <ComboBoxItem Content="ชื่อลูกค้า"/>
+            <ComboBoxItem Content="ที่อยู่"/>
+            <ComboBoxItem Content="Email"/>
+        </ComboBox>
+        <TextBox x:Name="tbInputSearch" HorizontalAlignment="Left" Height="23" Margin="126,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Text="ใส่ข้อความที่ต้องการค้นหา.."/>
+        <Button x:Name="btnSearch" Content="ค้นหา" HorizontalAlignment="Left" Margin="356,65,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
+        <ListView x:Name="listViewBook" HorizontalAlignment="Left" Height="284" Margin="31,100,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding Customer_Id}"/>
@@ -29,15 +39,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btnSearch" Content="ค้นหา" HorizontalAlignment="Left" Margin="349,65,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
-        <ComboBox x:Name="selectSearchFilter" HorizontalAlignment="Left" Margin="24,66,0,0" VerticalAlignment="Top" Width="90">
-            <ComboBoxItem Content="ทั้งหมด" IsSelected="True"/>
-            <ComboBoxItem Content="รหัสลูกค้า"/>
-            <ComboBoxItem Content="ชื่อลูกค้า"/>
-            <ComboBoxItem Content="ที่อยู่"/>
-            <ComboBoxItem Content="Email"/>
-        </ComboBox>
-        <Button x:Name="btnClearData" Content="ล้างข้อมูล" HorizontalAlignment="Left" Margin="486,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
+        
 
     </Grid>
 </Window>

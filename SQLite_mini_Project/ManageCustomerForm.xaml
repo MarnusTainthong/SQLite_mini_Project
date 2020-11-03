@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         Title="จัดการข้อมูลลูกค้า" Height="450" Width="782" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="tbInputSearch" HorizontalAlignment="Left" Height="23" Margin="111,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" GotFocus="tbInputSearch_GotFocus" Text="ใส่ข้อความที่ต้องการค้นหา.."/>
-        <TextBox x:Name="tbInputCustomerId" HorizontalAlignment="Left" Height="23" Margin="540,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="lbCustomerId" Content="รหัสลูกค้า" HorizontalAlignment="Left" Margin="473,64,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbInputCustomerName" HorizontalAlignment="Left" Height="23" Margin="540,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="lbCustomerName" Content="ชื่อลูกค้า" HorizontalAlignment="Left" Margin="478,99,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbCustomerAddress" Content="ที่อยู่" HorizontalAlignment="Left" Margin="497,136,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbInputCustomerEmail" HorizontalAlignment="Left" Height="23" Margin="540,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="lbCustomerEmail" Content="Email" HorizontalAlignment="Left" Margin="489,238,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbInputCustomerAddress" HorizontalAlignment="Left" Height="86" Margin="540,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Button x:Name="btnAddCustomer" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="478,292,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnAddCustomer_Click"/>
-        <Button x:Name="btnEditCustomer" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="633,292,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnEditCustomer_Click"/>
-        <Button x:Name="btnRemoveCustomer" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="633,346,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnRemoveCustomer_Click"/>
-        <ListView x:Name="listViewCustomers" HorizontalAlignment="Left" Height="284" Margin="16,102,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single" SelectionChanged="listViewCustomers_SelectionChanged">
+        <TextBox x:Name="tbInputSearch" HorizontalAlignment="Left" Height="23" Margin="125,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" GotFocus="tbInputSearch_GotFocus" Text="ใส่ข้อความที่ต้องการค้นหา.."/>
+        <TextBox x:Name="tbInputCustomerId" HorizontalAlignment="Left" Height="23" Margin="524,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbCustomerId" Content="รหัสลูกค้า" HorizontalAlignment="Left" Margin="457,64,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputCustomerName" HorizontalAlignment="Left" Height="23" Margin="524,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbCustomerName" Content="ชื่อลูกค้า" HorizontalAlignment="Left" Margin="462,99,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbCustomerAddress" Content="ที่อยู่" HorizontalAlignment="Left" Margin="481,136,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputCustomerEmail" HorizontalAlignment="Left" Height="23" Margin="524,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbCustomerEmail" Content="Email" HorizontalAlignment="Left" Margin="473,238,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputCustomerAddress" HorizontalAlignment="Left" Height="86" Margin="524,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Button x:Name="btnAddCustomer" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="462,292,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnAddCustomer_Click"/>
+        <Button x:Name="btnEditCustomer" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="617,292,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnEditCustomer_Click"/>
+        <Button x:Name="btnRemoveCustomer" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="617,346,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnRemoveCustomer_Click"/>
+        <ListView x:Name="listViewCustomers" HorizontalAlignment="Left" Height="284" Margin="30,102,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single" SelectionChanged="listViewCustomers_SelectionChanged">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="รหัสลูกค้า" DisplayMemberBinding="{Binding Path=Customer_Id}" Width="80"/>
@@ -29,14 +29,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btnSearch" Content="ค้นหา" HorizontalAlignment="Left" Margin="341,67,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnSearch_Click"/>
-        <ComboBox x:Name="selectSearchFilter" HorizontalAlignment="Left" Margin="16,68,0,0" VerticalAlignment="Top" Width="90">
+        <Button x:Name="btnSearch" Content="ค้นหา" HorizontalAlignment="Left" Margin="355,67,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnSearch_Click"/>
+        <ComboBox x:Name="selectSearchFilter" HorizontalAlignment="Left" Margin="30,68,0,0" VerticalAlignment="Top" Width="90">
             <ComboBoxItem Content="ทั้งหมด" IsSelected="True"/>
             <ComboBoxItem Content="รหัสลูกค้า"/>
             <ComboBoxItem Content="ชื่อลูกค้า"/>
             <ComboBoxItem Content="ที่อยู่"/>
             <ComboBoxItem Content="Email"/>
         </ComboBox>
-        <Button x:Name="btnClearData" Content="ล้างข้อมูล" HorizontalAlignment="Left" Margin="478,346,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnClearData_Click"/>
+        <Button x:Name="btnClearData" Content="ล้างข้อมูล" HorizontalAlignment="Left" Margin="462,346,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnClearData_Click"/>
     </Grid>
 </Window>
