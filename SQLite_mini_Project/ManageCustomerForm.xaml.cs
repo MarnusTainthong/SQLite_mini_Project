@@ -121,6 +121,7 @@ namespace SQLite_mini_Project
             tbInputCustomerName.Clear();
             tbInputCustomerAddress.Clear();
             tbInputCustomerEmail.Clear();
+            showCustomerData();
         }
 
         private void listViewCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
