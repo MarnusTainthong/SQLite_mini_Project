@@ -104,5 +104,62 @@ namespace SQLite_mini_Project
                 return false;
             }
         }
+
+        public static List<List<string>> filterSearchBookData(string searchFilter, string searchKeyword)
+        {
+            List<List<String>> bookData = new List<List<String>>();
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+                SqliteCommand searchCommand = new SqliteCommand();
+
+                if (searchFilter == "ทั้งหมด")
+                {
+
+                    searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
+                                                "WHERE ISBN LIKE '%" + @searchKeyword + "%' OR " +
+                                                "Title LIKE '%" + @searchKeyword + "%' OR " +
+                                                "Description LIKE '%" + @searchKeyword + "%' OR " +
+                                                "Price LIKE '%" + @searchKeyword + "%'";
+                }
+                else if (searchFilter == "ISBN")
+                {
+                    searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
+                                                "WHERE ISBN LIKE '%" + @searchKeyword + "%'";
+                }
+                else if (searchFilter == "ชื่อหนังสือ")
+                {
+                    searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
+                                                "WHERE Title LIKE '%" + @searchKeyword + "%'";
+                }
+                else if (searchFilter == "รายละเอียด")
+                {
+                    searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
+                                                "WHERE Description LIKE '%" + @searchKeyword + "%'";
+                }
+                else if (searchFilter == "ราคา")
+                {
+                    searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
+                                                "WHERE Price LIKE '%" + @searchKeyword + "%'";
+                }
+
+                searchCommand.Parameters.AddWithValue("@searchKeyword", searchKeyword);
+                searchCommand.Connection = db;
+                SqliteDataReader query = searchCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    List<string> dataColumn = new List<string>();
+                    for (int i = 0; i < query.FieldCount; i++)
+                    {
+                        dataColumn.Add(query.GetString(i));
+                    }
+                    bookData.Add(dataColumn);
+                }
+
+                db.Close();
+            }
+            return bookData;
+        }
     }
 }

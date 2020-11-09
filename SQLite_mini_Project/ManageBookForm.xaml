@@ -22,13 +22,13 @@
 
         <ComboBox x:Name="selectSearchFilter" HorizontalAlignment="Left" Margin="31,66,0,0" VerticalAlignment="Top" Width="90">
             <ComboBoxItem Content="ทั้งหมด" IsSelected="True"/>
-            <ComboBoxItem Content="รหัสลูกค้า"/>
-            <ComboBoxItem Content="ชื่อลูกค้า"/>
-            <ComboBoxItem Content="ที่อยู่"/>
-            <ComboBoxItem Content="Email"/>
+            <ComboBoxItem Content="ISBN"/>
+            <ComboBoxItem Content="ชื่อหนังสือ"/>
+            <ComboBoxItem Content="รายละเอียด"/>
+            <ComboBoxItem Content="ราคา"/>
         </ComboBox>
-        <TextBox x:Name="tbInputSearch" HorizontalAlignment="Left" Height="23" Margin="126,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Text="ใส่ข้อความที่ต้องการค้นหา.."/>
-        <Button x:Name="btnSearch" Content="ค้นหา" HorizontalAlignment="Left" Margin="356,65,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
+        <TextBox x:Name="tbInputSearch" HorizontalAlignment="Left" Height="23" Margin="126,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Text="ใส่ข้อความที่ต้องการค้นหา.." GotFocus="tbInputSearch_GotFocus"/>
+        <Button x:Name="btnSearch" Content="ค้นหา" HorizontalAlignment="Left" Margin="356,65,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnSearch_Click"/>
         <ListView x:Name="listViewBook" HorizontalAlignment="Left" Height="284" Margin="31,100,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">

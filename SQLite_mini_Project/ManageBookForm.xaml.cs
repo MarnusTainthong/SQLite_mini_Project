@@ -100,5 +100,38 @@ namespace SQLite_mini_Project
             e.Handled = Regex.IsMatch(e.Text, "[^0-9.]+");
         }
 
+        private void tbInputSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbInputSearch.Text = "";
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string searchFilter = selectSearchFilter.Text;
+
+            List<List<string>> dataFound = new List<List<string>>();
+            int i = 0;
+            foreach (List<string> searchItem in BookModel.filterSearchBookData(searchFilter, tbInputSearch.Text))
+            {
+                dataFound.Add(searchItem);
+                i++;
+            }
+
+            if (dataFound.Count == 0)
+            {
+                MessageBox.Show("Data Not Found.");
+                listViewBook.ItemsSource = "";
+            }
+            else
+            {
+                List<BookModel> bookList = new List<BookModel>();
+                int numberOfList = dataFound.Count();
+                for (int j = 0; j < numberOfList; j++)
+                {
+                    bookList.Add(new BookModel(dataFound[j][0], dataFound[j][1], dataFound[j][2], float.Parse(dataFound[j][3])));
+                }
+                listViewBook.ItemsSource = bookList;
+            }
+        }
     }
 }
