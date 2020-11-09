@@ -67,6 +67,7 @@ namespace SQLite_mini_Project
                 {
                     //showCustomerData();
                     MessageBox.Show("เพิ่มข้อมูลสำเร็จ!");
+                    showBookData();
                 }
                 else
                 {
