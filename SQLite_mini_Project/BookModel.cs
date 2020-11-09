@@ -161,5 +161,35 @@ namespace SQLite_mini_Project
             }
             return bookData;
         }
+
+        public static Boolean updateBook(string ISBN, string bookTitle, string bookDesc, string bookPrice)
+        {
+            try
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand();
+                    updateCommand.CommandText = "UPDATE " + tbName + " SET Title = @Book_title, Description = @Book_desc, Price = @Book_price " +
+                                                "WHERE ISBN = @Book_ISBN";
+
+                    updateCommand.Parameters.AddWithValue("@Book_ISBN", ISBN);
+                    updateCommand.Parameters.AddWithValue("@Book_title", bookTitle);
+                    updateCommand.Parameters.AddWithValue("@Book_desc", bookDesc);
+                    updateCommand.Parameters.AddWithValue("@Book_price", bookPrice);
+
+                    updateCommand.Connection = db;
+                    updateCommand.ExecuteReader();
+
+                    db.Close();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
     }
 }

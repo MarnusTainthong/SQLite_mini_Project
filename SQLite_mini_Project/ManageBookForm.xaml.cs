@@ -89,10 +89,12 @@ namespace SQLite_mini_Project
 
         private void resetFormData()
         {
+            tbInputISBN.IsReadOnly = false;
             tbInputISBN.Clear();
             tbInputBookTitle.Clear();
             tbInputBookDesc.Clear();
             tbInputBookPrice.Clear();
+            showBookData();
         }
 
         private void tbInputBookPrice_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -132,6 +134,40 @@ namespace SQLite_mini_Project
                 }
                 listViewBook.ItemsSource = bookList;
             }
+        }
+
+        private void listViewBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BookModel selectBook = (BookModel)listViewBook.SelectedItem;
+            if(selectBook != null)
+            {
+                tbInputISBN.IsReadOnly = true;
+                tbInputISBN.Text = selectBook.BookISBN;
+                tbInputBookTitle.Text = selectBook.BookTitle;
+                tbInputBookDesc.Text = selectBook.BookDesc;
+                tbInputBookPrice.Text = selectBook.BookPrice.ToString();
+            }
+        }
+
+        private void btnEditBook_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "คุณ 'ยืนยัน' ที่จะแก้ไขข้อมูล ใช่หรือไม่ ?";
+            string title = "ยืนยันการแก้ไข";
+            MessageBoxButton msgButton = MessageBoxButton.YesNo;
+
+            if (MessageBox.Show(message, title, msgButton, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                if (BookModel.updateBook(tbInputISBN.Text, tbInputBookTitle.Text, tbInputBookDesc.Text, tbInputBookPrice.Text))
+                {
+
+                    MessageBox.Show("แก้ไขข้อมูลสำเร็จ!");
+                }
+                else
+                {
+                    MessageBox.Show("แก้ไขข้อมูลไม่สำเร็จ! โปรดติดต่อเจ้าหน้าที่");
+                }
+            }
+            resetFormData();
         }
     }
 }

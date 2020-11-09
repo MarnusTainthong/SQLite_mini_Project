@@ -16,7 +16,7 @@
         <Label x:Name="lbBookPrice" Content="ราคาหนังสือ" HorizontalAlignment="Left" Margin="467,236,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbInputBookPrice" HorizontalAlignment="Left" Height="23" Margin="543,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" PreviewTextInput="tbInputBookPrice_PreviewTextInput"/>
         <Button x:Name="btnAddBook" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="481,290,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnAddBook_Click"/>
-        <Button x:Name="btnEditBook" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="636,290,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
+        <Button x:Name="btnEditBook" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="636,290,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnEditBook_Click"/>
         <Button x:Name="btnClearData" Content="ล้างข้อมูล" HorizontalAlignment="Left" Margin="481,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
         <Button x:Name="btnRemoveBook" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="636,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
 
@@ -29,7 +29,7 @@
         </ComboBox>
         <TextBox x:Name="tbInputSearch" HorizontalAlignment="Left" Height="23" Margin="126,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Text="ใส่ข้อความที่ต้องการค้นหา.." GotFocus="tbInputSearch_GotFocus"/>
         <Button x:Name="btnSearch" Content="ค้นหา" HorizontalAlignment="Left" Margin="356,65,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnSearch_Click"/>
-        <ListView x:Name="listViewBook" HorizontalAlignment="Left" Height="284" Margin="31,100,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
+        <ListView x:Name="listViewBook" HorizontalAlignment="Left" Height="284" Margin="31,100,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single" SelectionChanged="listViewBook_SelectionChanged">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding BookISBN}"/>
