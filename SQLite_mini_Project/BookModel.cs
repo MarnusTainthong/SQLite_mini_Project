@@ -23,6 +23,15 @@ namespace SQLite_mini_Project
         public string BookDesc { get => bookDesc; set => bookDesc = value; }
         public float BookPrice { get => bookPrice; set => bookPrice = value; }
 
+        public BookModel(string bookISBN, string bookTitle, string bookDesc, float bookPrice)
+        {
+            BookISBN = bookISBN;
+            BookTitle = bookTitle;
+            BookDesc = bookDesc;
+            BookPrice = bookPrice;
+
+        }
+
         public static void InitializeDatabase()
         {
             using (SqliteConnection db = new SqliteConnection("Filename=sqliteBookStore.db"))
@@ -38,6 +47,32 @@ namespace SQLite_mini_Project
                 SqliteCommand createTable = new SqliteCommand(tableCommand, db);
                 createTable.ExecuteReader();
             }
+        }
+
+        public static List<List<String>> showBookData()
+        {
+            List<List<String>> booksData = new List<List<String>>();
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+                SqliteCommand selectCommand = new SqliteCommand();
+                selectCommand.CommandText = "SELECT * FROM " + tbName;
+                selectCommand.Connection = db;
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    List<string> dataColumn = new List<string>();
+                    for (int i = 0; i < query.FieldCount; i++)
+                    {
+                        dataColumn.Add(query.GetString(i));
+                    }
+                    booksData.Add(dataColumn);
+                }
+
+                db.Close();
+            }
+            return booksData;
         }
 
         public static bool AddBook(string BookISBN, string BookTitle, string BookDesc, float BookPrice)

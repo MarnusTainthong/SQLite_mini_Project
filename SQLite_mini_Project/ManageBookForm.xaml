@@ -15,10 +15,10 @@
         <TextBox x:Name="tbInputBookDesc" HorizontalAlignment="Left" Height="86" Margin="543,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
         <Label x:Name="lbBookPrice" Content="ราคาหนังสือ" HorizontalAlignment="Left" Margin="467,236,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbInputBookPrice" HorizontalAlignment="Left" Height="23" Margin="543,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" PreviewTextInput="tbInputBookPrice_PreviewTextInput"/>
-        <Button x:Name="btnAddCustomer" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="481,290,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnAddCustomer_Click"/>
-        <Button x:Name="btnEditCustomer" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="636,290,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
+        <Button x:Name="btnAddBook" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="481,290,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnAddBook_Click"/>
+        <Button x:Name="btnEditBook" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="636,290,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
         <Button x:Name="btnClearData" Content="ล้างข้อมูล" HorizontalAlignment="Left" Margin="481,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
-        <Button x:Name="btnRemoveCustomer" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="636,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
+        <Button x:Name="btnRemoveBook" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="636,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
 
         <ComboBox x:Name="selectSearchFilter" HorizontalAlignment="Left" Margin="31,66,0,0" VerticalAlignment="Top" Width="90">
             <ComboBoxItem Content="ทั้งหมด" IsSelected="True"/>
@@ -32,10 +32,10 @@
         <ListView x:Name="listViewBook" HorizontalAlignment="Left" Height="284" Margin="31,100,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
-                    <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding Customer_Id}"/>
-                    <GridViewColumn Header="ชื่อหนังสือ" DisplayMemberBinding="{Binding Customer_name}"/>
-                    <GridViewColumn Header="รายละเอียด" DisplayMemberBinding="{Binding Customer_address}"/>
-                    <GridViewColumn Header="ราคา" DisplayMemberBinding="{Binding Customer_email}"/>
+                    <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding BookISBN}"/>
+                    <GridViewColumn Header="ชื่อหนังสือ" DisplayMemberBinding="{Binding BookTitle}"/>
+                    <GridViewColumn Header="รายละเอียด" DisplayMemberBinding="{Binding BookDesc}"/>
+                    <GridViewColumn Header="ราคา" DisplayMemberBinding="{Binding BookPrice}"/>
                 </GridView>
             </ListView.View>
         </ListView>

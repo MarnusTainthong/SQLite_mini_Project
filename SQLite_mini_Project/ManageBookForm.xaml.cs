@@ -24,9 +24,37 @@ namespace SQLite_mini_Project
         {
             InitializeComponent();
             BookModel.InitializeDatabase();
+            showBookData();
         }
 
-        private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
+        private void showBookData()
+        {
+            List<List<string>> dataFound = new List<List<string>>();
+            int i = 0;
+            foreach (List<string> bookItem in BookModel.showBookData())
+            {
+                dataFound.Add(bookItem);
+                i++;
+            }
+
+            if (dataFound.Count == 0)
+            {
+                MessageBox.Show("Data Not Found.");
+            }
+            else
+            {
+                List<BookModel> bookList = new List<BookModel>();
+                int numberOfList = dataFound.Count();
+                for (int j = 0; j < numberOfList; j++)
+                {
+                    bookList.Add(new BookModel(dataFound[j][0], dataFound[j][1], dataFound[j][2], float.Parse(dataFound[j][3])));
+                }
+                listViewBook.ItemsSource = bookList;
+            }
+
+        }
+
+        private void btnAddBook_Click(object sender, RoutedEventArgs e)
         {
             if (!tbInputISBN.IsReadOnly)
             {
@@ -70,5 +98,6 @@ namespace SQLite_mini_Project
         {
             e.Handled = Regex.IsMatch(e.Text, "[^0-9.]+");
         }
+
     }
 }
