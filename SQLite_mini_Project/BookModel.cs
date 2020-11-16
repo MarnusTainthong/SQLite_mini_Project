@@ -191,5 +191,31 @@ namespace SQLite_mini_Project
                 return false;
             }
         }
+
+        public static bool removeBook(string bookId)
+        {
+            try
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand();
+                    updateCommand.CommandText = "DELETE FROM " + tbName + " WHERE ISBN = @ISBN";
+                    updateCommand.Parameters.AddWithValue("@ISBN", bookId);
+
+                    updateCommand.Connection = db;
+                    updateCommand.ExecuteReader();
+
+                    db.Close();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+
+        }
     }
 }

@@ -89,6 +89,9 @@ namespace SQLite_mini_Project
 
         private void resetFormData()
         {
+            btnEditBook.IsEnabled = false;
+            btnRemoveBook.IsEnabled = false;
+
             tbInputISBN.IsReadOnly = false;
             tbInputISBN.Clear();
             tbInputBookTitle.Clear();
@@ -146,6 +149,9 @@ namespace SQLite_mini_Project
                 tbInputBookTitle.Text = selectBook.BookTitle;
                 tbInputBookDesc.Text = selectBook.BookDesc;
                 tbInputBookPrice.Text = selectBook.BookPrice.ToString();
+
+                btnEditBook.IsEnabled = true;
+                btnRemoveBook.IsEnabled = true;
             }
         }
 
@@ -172,6 +178,27 @@ namespace SQLite_mini_Project
 
         private void btnClearData_Click(object sender, RoutedEventArgs e)
         {
+            resetFormData();
+        }
+
+        private void btnRemoveBook_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "คุณ 'ยืนยัน' ที่จะลบข้อมูล ใช่หรือไม่ ?";
+            string title = "ยืนยันการลบ";
+            MessageBoxButton msgButton = MessageBoxButton.YesNo;
+
+            if (MessageBox.Show(message, title, msgButton, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                if (BookModel.removeBook(tbInputISBN.Text))
+                {
+                    MessageBox.Show("ลบข้อมูลสำเร็จ!");
+                    showBookData();
+                }
+                else
+                {
+                    MessageBox.Show("ลบข้อมูลไม่สำเร็จ! โปรดติดต่อเจ้าหน้าที่");
+                }
+            }
             resetFormData();
         }
     }
