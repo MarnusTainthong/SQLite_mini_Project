@@ -116,6 +116,9 @@ namespace SQLite_mini_Project
 
         public void resetFormData()
         {
+            btnEditCustomer.IsEnabled = false;
+            btnRemoveCustomer.IsEnabled = false;
+
             tbInputCustomerId.IsReadOnly = false;
             tbInputCustomerId.Clear();
             tbInputCustomerName.Clear();
@@ -134,6 +137,9 @@ namespace SQLite_mini_Project
                 tbInputCustomerName.Text = selectCustomer.Customer_name;
                 tbInputCustomerAddress.Text = selectCustomer.Customer_address;
                 tbInputCustomerEmail.Text = selectCustomer.Customer_email;
+
+                btnEditCustomer.IsEnabled = true;
+                btnRemoveCustomer.IsEnabled = true;
             }
             
         }
