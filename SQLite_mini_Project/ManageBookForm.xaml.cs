@@ -169,5 +169,10 @@ namespace SQLite_mini_Project
             }
             resetFormData();
         }
+
+        private void btnClearData_Click(object sender, RoutedEventArgs e)
+        {
+            resetFormData();
+        }
     }
 }

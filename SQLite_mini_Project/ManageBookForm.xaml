@@ -17,7 +17,7 @@
         <TextBox x:Name="tbInputBookPrice" HorizontalAlignment="Left" Height="23" Margin="543,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" PreviewTextInput="tbInputBookPrice_PreviewTextInput"/>
         <Button x:Name="btnAddBook" Content="เพิ่มข้อมูล" HorizontalAlignment="Left" Margin="481,290,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnAddBook_Click"/>
         <Button x:Name="btnEditBook" Content="แก้ไขข้อมูล" HorizontalAlignment="Left" Margin="636,290,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnEditBook_Click"/>
-        <Button x:Name="btnClearData" Content="ล้างข้อมูล" HorizontalAlignment="Left" Margin="481,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
+        <Button x:Name="btnClearData" Content="ล้างข้อมูล" HorizontalAlignment="Left" Margin="481,344,0,0" VerticalAlignment="Top" Width="125" Height="40" Click="btnClearData_Click"/>
         <Button x:Name="btnRemoveBook" Content="ลบข้อมูล" HorizontalAlignment="Left" Margin="636,344,0,0" VerticalAlignment="Top" Width="125" Height="40"/>
 
         <ComboBox x:Name="selectSearchFilter" HorizontalAlignment="Left" Margin="31,66,0,0" VerticalAlignment="Top" Width="90">
