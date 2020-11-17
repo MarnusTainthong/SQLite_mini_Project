@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLite_mini_Project"
         mc:Ignorable="d"
-        Title="ขายหนังสือ" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="ขายหนังสือ" Height="412" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Label x:Name="lbBookISBN" Content="ISBN" HorizontalAlignment="Left" Margin="63,36,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputISBN" HorizontalAlignment="Left" Height="23" Margin="109,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" MaxLength="13" MaxLines="1"/>
+        <Label x:Name="lbBookTitle" Content="ชื่อหนังสือ" HorizontalAlignment="Left" Margin="43,71,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputBookTitle" HorizontalAlignment="Left" Height="23" Margin="109,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" IsEnabled="False"/>
+        <Label x:Name="lbBookDesc" Content="คำอธิบาย" HorizontalAlignment="Left" Margin="45,108,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputBookDesc" HorizontalAlignment="Left" Height="60" Margin="109,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" IsEnabled="False"/>
+        <Label x:Name="lbBookPrice" Content="ราคาหนังสือ&#xD;&#xA;(บาท)" HorizontalAlignment="Left" Margin="33,175,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputBookPrice" HorizontalAlignment="Left" Height="23" Margin="109,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" IsEnabled="False"/>
+        <Button x:Name="btnSearchISBN" Content="ค้นหา" HorizontalAlignment="Left" Margin="249,39,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
+        <Label x:Name="lbQtyBuy" Content="จำนวนสั่งซื้อ" HorizontalAlignment="Left" Margin="32,232,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputQtyBuy" HorizontalAlignment="Left" Height="23" Margin="109,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" IsEnabled="False"/>
+        <Button x:Name="btnAddToCart" Content="เพิ่มลงตะกร้า" HorizontalAlignment="Left" Margin="32,280,0,0" VerticalAlignment="Top" Width="292" Height="68"/>
+        <ListView x:Name="listViewCart" HorizontalAlignment="Left" Height="184" Margin="365,74,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding Customer_Id}"/>
+                    <GridViewColumn Header="ชื่อหนังสือ" DisplayMemberBinding="{Binding Customer_name}"/>
+                    <GridViewColumn Header="ราคา" DisplayMemberBinding="{Binding Customer_address}"/>
+                    <GridViewColumn Header="จำนวน" DisplayMemberBinding="{Binding Customer_email}"/>
+                    <GridViewColumn Header="ราคารวม" DisplayMemberBinding="{Binding Customer_email}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="tbInputCustomerId" HorizontalAlignment="Left" Height="23" Margin="435,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="lbCustomerId" Content="รหัสลูกค้า" HorizontalAlignment="Left" Margin="365,38,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSearchCustomer" Content="ค้นหา" HorizontalAlignment="Left" Margin="685,39,0,0" VerticalAlignment="Top" Width="80" Height="23"/>
+        <Label x:Name="lbTotalPrice" Content="รวมเป็นเงิน&#xD;&#xA;(บาท)" HorizontalAlignment="Left" Margin="365,289,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputTotalPrice" HorizontalAlignment="Left" Height="42" Margin="435,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="30"/>
+        <Button x:Name="btnConfirmBuy" Content="ยืนยันคำสั่งซื้อ" HorizontalAlignment="Left" Margin="672,274,0,0" VerticalAlignment="Top" Width="93" Height="74"/>
+
     </Grid>
 </Window>
