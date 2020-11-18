@@ -19,7 +19,7 @@
         <Label x:Name="lbQtyBuy" Content="จำนวนสั่งซื้อ" HorizontalAlignment="Left" Margin="32,232,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbInputQtyBuy" HorizontalAlignment="Left" Height="23" Margin="109,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" IsEnabled="False" PreviewTextInput="tbInputQtyBuy_PreviewTextInput"/>
         <Button x:Name="btnAddToCart" Content="เพิ่มลงตะกร้า" HorizontalAlignment="Left" Margin="32,280,0,0" VerticalAlignment="Top" Width="292" Height="68" Click="btnAddToCart_Click"/>
-        <ListView x:Name="listViewCart" HorizontalAlignment="Left" Height="184" Margin="365,74,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
+        <ListView x:Name="listViewCart" HorizontalAlignment="Left" Height="143" Margin="365,112,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding BookIsbn}" Width="90"/>
@@ -30,12 +30,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="tbInputCustomerId" HorizontalAlignment="Left" Height="23" Margin="435,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <TextBox x:Name="tbInputCustomerId" HorizontalAlignment="Left" Height="23" Margin="435,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" PreviewTextInput="tbInputCustomerId_PreviewTextInput"/>
         <Label x:Name="lbCustomerId" Content="รหัสลูกค้า" HorizontalAlignment="Left" Margin="365,38,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnSearchCustomer" Content="ค้นหา" HorizontalAlignment="Left" Margin="685,39,0,0" VerticalAlignment="Top" Width="80" Height="23"/>
-        <Label x:Name="lbTotalPrice" Content="รวมเป็นเงิน&#xD;&#xA;(บาท)" HorizontalAlignment="Left" Margin="365,289,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbInputTotalPrice" HorizontalAlignment="Left" Height="42" Margin="435,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="30"/>
-        <Button x:Name="btnConfirmBuy" Content="ยืนยันคำสั่งซื้อ" HorizontalAlignment="Left" Margin="672,274,0,0" VerticalAlignment="Top" Width="93" Height="74"/>
+        <Button x:Name="btnSearchCustomer" Content="ค้นหา" HorizontalAlignment="Left" Margin="685,39,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnSearchCustomer_Click"/>
+        <Label x:Name="lbTotalPrice" Content="รวมเป็นเงิน&#xD;&#xA;(บาท)" HorizontalAlignment="Left" Margin="365,280,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputTotalPrice" HorizontalAlignment="Left" Height="42" Margin="435,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="30"/>
+        <Button x:Name="btnConfirmBuy" Content="ยืนยันคำสั่งซื้อ" HorizontalAlignment="Left" Margin="672,280,0,0" VerticalAlignment="Top" Width="93" Height="68"/>
+        <TextBox x:Name="tbInputCustomerName" HorizontalAlignment="Left" Height="23" Margin="435,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" IsEnabled="False"/>
+        <Label x:Name="lbCustomerName" Content="ชื่อลูกค้า" HorizontalAlignment="Left" Margin="365,71,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

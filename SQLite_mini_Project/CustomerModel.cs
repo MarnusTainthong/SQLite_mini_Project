@@ -215,5 +215,34 @@ namespace SQLite_mini_Project
             }
 
         }
+
+        public static List<List<string>> getCustomerById(string customerId)
+        {
+            List<List<string>> customerData = new List<List<string>>();
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+                SqliteCommand searchCommand = new SqliteCommand();
+
+                searchCommand.CommandText = "SELECT * FROM " + tbName + " " +
+                                            "WHERE Customer_Id = @searchKeyword";
+                searchCommand.Parameters.AddWithValue("@searchKeyword", customerId);
+                searchCommand.Connection = db;
+                SqliteDataReader query = searchCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    List<string> dataColumn = new List<string>();
+                    for (int i = 0; i < query.FieldCount; i++)
+                    {
+                        dataColumn.Add(query.GetString(i));
+                    }
+                    customerData.Add(dataColumn);
+
+                }
+                db.Close();
+            }
+            return customerData;
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace SQLite_mini_Project
     public partial class SaleBookForm : Window
     {
         List<PurchaseList> bookList = new List<PurchaseList>();
+        bool btnCustomerStatus = false;
         public SaleBookForm()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace SQLite_mini_Project
         {
             if (checkEmpty(tbInputISBN.Text))
             {
-                MessageBox.Show("กรุณากรอกข้อมูลให้ถูกต้อง");
+                MessageBox.Show("กรุณากรอกข้อมูล");
             }
             else
             {
@@ -99,6 +100,50 @@ namespace SQLite_mini_Project
             tbInputBookDesc.IsEnabled = false;
             tbInputBookPrice.IsEnabled = false;
             tbInputQtyBuy.IsEnabled = false;
+        }
+
+        private void btnSearchCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnCustomerStatus)
+            {
+                tbInputCustomerId.Text = null;
+                btnSearchCustomer.Content = "ค้นหา";
+                tbInputCustomerId.IsEnabled = true;
+                tbInputCustomerName.Text = null;
+                btnCustomerStatus = false;
+            }
+            else
+            {
+                if (checkEmpty(tbInputCustomerId.Text))
+                {
+                    MessageBox.Show("กรุณากรอกข้อมูล");
+                }
+                else
+                {
+                    List<List<string>> dataFound = new List<List<string>>();
+                    foreach (List<string> bookData in CustomerModel.getCustomerById(tbInputCustomerId.Text))
+                    {
+                        dataFound.Add(bookData);
+                    }
+                    if (!dataFound.Any())
+                    {
+                        MessageBox.Show("Data Not Found.");
+                    }
+                    else
+                    {
+                        tbInputCustomerName.Text = dataFound[0][1];
+                        tbInputCustomerId.IsEnabled = false;
+                        btnSearchCustomer.Content = "ยกเลิก";
+                    }
+                }
+                btnCustomerStatus = true;
+            }
+            
+        }
+
+        private void tbInputCustomerId_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+$");
         }
     }
 }
