@@ -18,8 +18,10 @@ namespace SQLite_mini_Project
     /// <summary>
     /// Interaction logic for SaleBookForm.xaml
     /// </summary>
+    
     public partial class SaleBookForm : Window
     {
+        List<PurchaseList> bookList = new List<PurchaseList>();
         public SaleBookForm()
         {
             InitializeComponent();
@@ -73,6 +75,30 @@ namespace SQLite_mini_Project
         private void tbInputQtyBuy_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = Regex.IsMatch(e.Text, "[^0-9]+$");
+        }
+
+        private void btnAddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            bookList.Add(new PurchaseList(tbInputISBN.Text, tbInputBookTitle.Text, float.Parse(tbInputBookPrice.Text), int.Parse(tbInputQtyBuy.Text)));
+            listViewCart.ItemsSource = bookList;
+            listViewCart.Items.Refresh();
+            resetForm();
+
+        }
+
+        private void resetForm()
+        {
+            tbInputBookTitle.Text = null;
+            tbInputBookDesc.Text = null;
+            tbInputBookPrice.Text = null;
+            tbInputQtyBuy.Text = null;
+            tbInputISBN.Text = null;
+
+            tbInputQtyBuy.IsEnabled = false;
+            tbInputBookTitle.IsEnabled = false;
+            tbInputBookDesc.IsEnabled = false;
+            tbInputBookPrice.IsEnabled = false;
+            tbInputQtyBuy.IsEnabled = false;
         }
     }
 }

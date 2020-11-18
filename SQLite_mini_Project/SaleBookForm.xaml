@@ -18,15 +18,15 @@
         <Button x:Name="btnSearchISBN" Content="ค้นหา" HorizontalAlignment="Left" Margin="249,39,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnSearchISBN_Click"/>
         <Label x:Name="lbQtyBuy" Content="จำนวนสั่งซื้อ" HorizontalAlignment="Left" Margin="32,232,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbInputQtyBuy" HorizontalAlignment="Left" Height="23" Margin="109,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" IsEnabled="False" PreviewTextInput="tbInputQtyBuy_PreviewTextInput"/>
-        <Button x:Name="btnAddToCart" Content="เพิ่มลงตะกร้า" HorizontalAlignment="Left" Margin="32,280,0,0" VerticalAlignment="Top" Width="292" Height="68"/>
+        <Button x:Name="btnAddToCart" Content="เพิ่มลงตะกร้า" HorizontalAlignment="Left" Margin="32,280,0,0" VerticalAlignment="Top" Width="292" Height="68" Click="btnAddToCart_Click"/>
         <ListView x:Name="listViewCart" HorizontalAlignment="Left" Height="184" Margin="365,74,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
-                    <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding Customer_Id}"/>
-                    <GridViewColumn Header="ชื่อหนังสือ" DisplayMemberBinding="{Binding Customer_name}"/>
-                    <GridViewColumn Header="ราคา" DisplayMemberBinding="{Binding Customer_address}"/>
-                    <GridViewColumn Header="จำนวน" DisplayMemberBinding="{Binding Customer_email}"/>
-                    <GridViewColumn Header="ราคารวม" DisplayMemberBinding="{Binding Customer_email}"/>
+                    <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding BookIsbn}" Width="90"/>
+                    <GridViewColumn Header="ชื่อหนังสือ" DisplayMemberBinding="{Binding BookTitle}" Width="120"/>
+                    <GridViewColumn Header="ราคา" DisplayMemberBinding="{Binding BookPrice}" Width="60"/>
+                    <GridViewColumn Header="จำนวน" DisplayMemberBinding="{Binding Qty}" Width="60"/>
+                    <GridViewColumn Header="ราคารวม" DisplayMemberBinding="{Binding SumPrice}" Width="60"/>
                 </GridView>
             </ListView.View>
         </ListView>

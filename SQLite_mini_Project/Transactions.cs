@@ -9,7 +9,20 @@ namespace SQLite_mini_Project
 {
     class Transactions
     {
+        string bookIsbn;
+        string bookTitle;
+        float bookPrice;
+        int qty;
+        float sumPrice;
+
         private static string dbpath = "sqliteBookStore.db";
+
+        public string BookIsbn { get => bookIsbn; set => bookIsbn = value; }
+        public string BookTitle { get => bookTitle; set => bookTitle = value; }
+        public float BookPrice { get => bookPrice; set => bookPrice = value; }
+        public int Qty { get => qty; set => qty = value; }
+        public float SumPrice { get => sumPrice; set => sumPrice = value; }
+
         public static void InitializeDatabase()
         {
             using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
@@ -29,4 +42,21 @@ namespace SQLite_mini_Project
             }
         }
     }
+    class PurchaseList : Transactions
+    {
+        public PurchaseList()
+        {
+
+        }
+
+        public PurchaseList(string bookIsbn, string bookTitle, float bookPrice, int qty)
+        {
+            BookIsbn = bookIsbn;
+            BookTitle = bookTitle;
+            BookPrice = bookPrice;
+            Qty = qty;
+            SumPrice = Qty * BookPrice;
+        }
+    }
+
 }
