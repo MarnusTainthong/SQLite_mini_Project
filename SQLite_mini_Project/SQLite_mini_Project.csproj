@@ -115,6 +115,9 @@
     <Compile Include="SaleBookForm.xaml.cs">
       <DependentUpon>SaleBookForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShowOrder.xaml.cs">
+      <DependentUpon>ShowOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transactions.cs" />
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SaleBookForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -82,15 +82,23 @@ namespace SQLite_mini_Project
 
         private void btnAddToCart_Click(object sender, RoutedEventArgs e)
         {
-            bookList.Add(new PurchaseList(tbInputISBN.Text, tbInputBookTitle.Text, float.Parse(tbInputBookPrice.Text), int.Parse(tbInputQtyBuy.Text)));
-            listViewCart.ItemsSource = bookList;
-            listViewCart.Items.Refresh();
-            btnConfirmState++;
+            if (!checkEmpty(tbInputISBN.Text))
+            {
+                bookList.Add(new PurchaseList(tbInputISBN.Text, tbInputBookTitle.Text, float.Parse(tbInputBookPrice.Text), int.Parse(tbInputQtyBuy.Text)));
+                listViewCart.ItemsSource = bookList;
+                listViewCart.Items.Refresh();
+                btnConfirmState++;
 
-            totalPrice += (float.Parse(tbInputBookPrice.Text) * int.Parse(tbInputQtyBuy.Text));
-            tbInputTotalPrice.Text = totalPrice.ToString() + ".-";
+                totalPrice += (float.Parse(tbInputBookPrice.Text) * int.Parse(tbInputQtyBuy.Text));
+                tbInputTotalPrice.Text = totalPrice.ToString() + ".-";
 
-            resetForm();
+                resetForm();
+            }
+            else
+            {
+                MessageBox.Show("กรุณากรอกข้อมูล");
+            }
+            
         }
 
         private void resetForm()
@@ -166,6 +174,27 @@ namespace SQLite_mini_Project
             {
                 btnConfirmBuy.IsEnabled = false;
             }
+        }
+
+        private void btnConfirmBuy_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "คุณต้องการ 'ยืนยันคำสั่งซื้อ' นี้ ใช่หรือไม่ ?";
+            string title = "ยืนยันคำสั่งซื้อ";
+            MessageBoxButton msgButton = MessageBoxButton.OKCancel;
+            if (MessageBox.Show(message, title, msgButton, MessageBoxImage.Warning) == MessageBoxResult.OK)
+            {
+                Transactions.InitializeDatabase();
+                string orderNumber = Transactions.generateOrderNumber();
+                //MessageBox.Show(orderNumber.ToString());
+                foreach(PurchaseList purchaseItem in listViewCart.Items)
+                {
+                    //MessageBox.Show(purchaseItem.BookIsbn);
+                    Transactions.AddTransactions(purchaseItem.BookIsbn, tbInputCustomerId.Text, orderNumber.ToString(), purchaseItem.Qty);
+                    //Transactions.AddTransactions()
+                }
+                
+            }
+            resetForm();
         }
     }
 }
