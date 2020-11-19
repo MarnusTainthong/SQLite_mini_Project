@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace SQLite_mini_Project
 {
-    class Transactions
+    public class Transactions
     {
         private static string dbpath = "sqliteBookStore.db";
         private static string tbName = "Transactions";
@@ -107,7 +107,7 @@ namespace SQLite_mini_Project
             }
         }
     }
-    class PurchaseList : Transactions
+    public class PurchaseList : Transactions
     {
         public PurchaseList()
         {

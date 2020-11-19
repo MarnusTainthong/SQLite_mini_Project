@@ -23,8 +23,8 @@ namespace SQLite_mini_Project
     {
         List<PurchaseList> bookList = new List<PurchaseList>();
         bool btnCustomerStatus = false;
-        float totalPrice = 0;
         int btnConfirmState = 0;
+        float totalPrice = 0;
         public SaleBookForm()
         {
             InitializeComponent();
@@ -98,7 +98,8 @@ namespace SQLite_mini_Project
             {
                 MessageBox.Show("กรุณากรอกข้อมูล");
             }
-            
+            checkBtnConfirm();
+
         }
 
         private void resetForm()
@@ -150,12 +151,12 @@ namespace SQLite_mini_Project
                         tbInputCustomerId.IsEnabled = false;
                         btnSearchCustomer.Content = "ยกเลิก";
                         btnConfirmState++;
+                        btnCustomerStatus = true;
                     }
                 }
-                btnCustomerStatus = true;
             }
-            checkBtnConfirm();
 
+            checkBtnConfirm();    
 
         }
 
@@ -174,6 +175,7 @@ namespace SQLite_mini_Project
             {
                 btnConfirmBuy.IsEnabled = false;
             }
+            MessageBox.Show(btnConfirmState.ToString());
         }
 
         private void btnConfirmBuy_Click(object sender, RoutedEventArgs e)
@@ -190,8 +192,11 @@ namespace SQLite_mini_Project
                 {
                     //MessageBox.Show(purchaseItem.BookIsbn);
                     Transactions.AddTransactions(purchaseItem.BookIsbn, tbInputCustomerId.Text, orderNumber.ToString(), purchaseItem.Qty);
-                    //Transactions.AddTransactions()
                 }
+
+                ShowOrder showOrder = new ShowOrder(bookList, orderNumber, tbInputCustomerName.Text, totalPrice);
+                showOrder.Show();
+                this.Close();
                 
             }
             resetForm();

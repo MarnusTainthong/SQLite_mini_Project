@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLite_mini_Project"
         mc:Ignorable="d"
-        Title="สรุปรายการสั่งซื้อ" Height="450" Width="800">
+        Title="สรุปรายการสั่งซื้อ" Height="612.422" Width="522.656" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        
+        <Label x:Name="lbSumOrder" Content="สรุปรายการสั่งซื้อสินค้า" HorizontalAlignment="Left" Margin="76,37,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+        <Label x:Name="lbOrderNo" Content="หมายเลขคำสั่งซื้อ : " HorizontalAlignment="Left" Margin="30,172,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="lbCustomerName" Content="ชื่อลูกค้า : " HorizontalAlignment="Left" Margin="30,138,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ListView x:Name="listViewCart" HorizontalAlignment="Left" Height="143" Margin="30,216,0,0" VerticalAlignment="Top" Width="450" SelectionMode="Single">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding BookIsbn}" Width="90"/>
+                    <GridViewColumn Header="ชื่อหนังสือ" DisplayMemberBinding="{Binding BookTitle}" Width="120"/>
+                    <GridViewColumn Header="ราคา" DisplayMemberBinding="{Binding BookPrice}" Width="80"/>
+                    <GridViewColumn Header="จำนวน" DisplayMemberBinding="{Binding Qty}" Width="80"/>
+                    <GridViewColumn Header="ราคารวม" DisplayMemberBinding="{Binding SumPrice}" Width="80"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="lbTotalPrice" Content="รวมเป็นเงิน&#xA;(บาท)" HorizontalAlignment="Left" Margin="190,384,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbInputTotalPrice" HorizontalAlignment="Left" Height="42" Margin="260,384,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="30" IsEnabled="False"/>
+        <Button x:Name="btnCloseWindow" Content="ปิดหน้าต่าง" HorizontalAlignment="Left" Margin="30,476,0,0" VerticalAlignment="Top" Width="450" Height="72" FontSize="24" FontWeight="Bold" Click="btnCloseWindow_Click"/>
+
     </Grid>
 </Window>

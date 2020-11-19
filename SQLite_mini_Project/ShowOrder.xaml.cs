@@ -21,7 +21,21 @@ namespace SQLite_mini_Project
     {
         public ShowOrder()
         {
+            
+        }
+
+        public ShowOrder(List<PurchaseList> purchaseList, string orderNo, string customerName, float totalPrice)
+        {
             InitializeComponent();
+            listViewCart.ItemsSource = purchaseList;
+            lbOrderNo.Content = "หมายเลขคำสั่งซื้อ : " + orderNo;
+            lbCustomerName.Content = "ชื่อลูกค้า : " + customerName;
+            tbInputTotalPrice.Text = totalPrice.ToString();
+        }
+
+        private void btnCloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
