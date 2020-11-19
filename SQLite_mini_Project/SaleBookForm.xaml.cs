@@ -23,7 +23,8 @@ namespace SQLite_mini_Project
     {
         List<PurchaseList> bookList = new List<PurchaseList>();
         bool btnCustomerStatus = false;
-        float totalPrice=0;
+        float totalPrice = 0;
+        int btnConfirmState = 0;
         public SaleBookForm()
         {
             InitializeComponent();
@@ -84,6 +85,7 @@ namespace SQLite_mini_Project
             bookList.Add(new PurchaseList(tbInputISBN.Text, tbInputBookTitle.Text, float.Parse(tbInputBookPrice.Text), int.Parse(tbInputQtyBuy.Text)));
             listViewCart.ItemsSource = bookList;
             listViewCart.Items.Refresh();
+            btnConfirmState++;
 
             totalPrice += (float.Parse(tbInputBookPrice.Text) * int.Parse(tbInputQtyBuy.Text));
             tbInputTotalPrice.Text = totalPrice.ToString() + ".-";
@@ -115,6 +117,7 @@ namespace SQLite_mini_Project
                 tbInputCustomerId.IsEnabled = true;
                 tbInputCustomerName.Text = null;
                 btnCustomerStatus = false;
+                btnConfirmState--;
             }
             else
             {
@@ -138,16 +141,31 @@ namespace SQLite_mini_Project
                         tbInputCustomerName.Text = dataFound[0][1];
                         tbInputCustomerId.IsEnabled = false;
                         btnSearchCustomer.Content = "ยกเลิก";
+                        btnConfirmState++;
                     }
                 }
                 btnCustomerStatus = true;
             }
-            
+            checkBtnConfirm();
+
+
         }
 
         private void tbInputCustomerId_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = Regex.IsMatch(e.Text, "[^0-9]+$");
+        }
+
+        private void checkBtnConfirm()
+        {
+            if (btnConfirmState >= 2)
+            {
+                btnConfirmBuy.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirmBuy.IsEnabled = false;
+            }
         }
     }
 }

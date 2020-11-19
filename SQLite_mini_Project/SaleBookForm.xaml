@@ -35,7 +35,7 @@
         <Button x:Name="btnSearchCustomer" Content="ค้นหา" HorizontalAlignment="Left" Margin="685,39,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnSearchCustomer_Click"/>
         <Label x:Name="lbTotalPrice" Content="รวมเป็นเงิน&#xD;&#xA;(บาท)" HorizontalAlignment="Left" Margin="365,280,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbInputTotalPrice" HorizontalAlignment="Left" Height="42" Margin="435,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="30" IsEnabled="False"/>
-        <Button x:Name="btnConfirmBuy" Content="ยืนยันคำสั่งซื้อ" HorizontalAlignment="Left" Margin="672,280,0,0" VerticalAlignment="Top" Width="93" Height="68"/>
+        <Button x:Name="btnConfirmBuy" Content="ยืนยันคำสั่งซื้อ" HorizontalAlignment="Left" Margin="672,280,0,0" VerticalAlignment="Top" Width="93" Height="68" IsEnabled="False"/>
         <TextBox x:Name="tbInputCustomerName" HorizontalAlignment="Left" Height="23" Margin="435,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" IsEnabled="False"/>
         <Label x:Name="lbCustomerName" Content="ชื่อลูกค้า" HorizontalAlignment="Left" Margin="365,71,0,0" VerticalAlignment="Top"/>
 
