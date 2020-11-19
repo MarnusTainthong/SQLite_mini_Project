@@ -23,6 +23,7 @@ namespace SQLite_mini_Project
     {
         List<PurchaseList> bookList = new List<PurchaseList>();
         bool btnCustomerStatus = false;
+        float totalPrice=0;
         public SaleBookForm()
         {
             InitializeComponent();
@@ -83,8 +84,11 @@ namespace SQLite_mini_Project
             bookList.Add(new PurchaseList(tbInputISBN.Text, tbInputBookTitle.Text, float.Parse(tbInputBookPrice.Text), int.Parse(tbInputQtyBuy.Text)));
             listViewCart.ItemsSource = bookList;
             listViewCart.Items.Refresh();
-            resetForm();
 
+            totalPrice += (float.Parse(tbInputBookPrice.Text) * int.Parse(tbInputQtyBuy.Text));
+            tbInputTotalPrice.Text = totalPrice.ToString() + ".-";
+
+            resetForm();
         }
 
         private void resetForm()
